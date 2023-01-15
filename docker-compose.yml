@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  tldraw:
+    image: dkllrjr/yjs-tldraw
+    volumes:
+      - "static:/app/build"
+
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - "static:/usr/share/nginx/html"
+    environment:
+      - VIRTUAL_HOST=tldraw.alaskanresearcher.dev
+      - LETSENCRYPT_HOST=tldraw.alaskanresearcher.dev
+
+volumes:
+  static:
+
+networks:
+  default:
+    external:
+      name: nginx_default
