@@ -4,13 +4,13 @@ services:
   tldraw:
     image: dkllrjr/yjs-tldraw
     volumes:
-      - "static:/app/build"
+      - ./build:/app/build
 
   nginx:
     image: nginx
     restart: unless-stopped
     volumes:
-      - "static:/usr/share/nginx/html"
+      - ./build:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=tldraw.alaskanresearcher.dev
       - LETSENCRYPT_HOST=tldraw.alaskanresearcher.dev
