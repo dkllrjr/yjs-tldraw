@@ -2,7 +2,7 @@ version: '3'
 
 services:
   tldraw:
-    image: dkllrjr/yjs-tldraw
+    image: dkllrjr/yjs-tldraw:latest
     volumes:
       - ./build:/app/build
 
